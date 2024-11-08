@@ -1,5 +1,6 @@
-package com.eventmanagement.event_management_app.events;
+package com.eventmanagement.event_management_app.repository;
 
+import com.eventmanagement.event_management_app.model.Events;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

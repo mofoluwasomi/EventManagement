@@ -1,5 +1,7 @@
-package com.eventmanagement.event_management_app.events;
+package com.eventmanagement.event_management_app.service;
 
+import com.eventmanagement.event_management_app.repository.EventsRepository;
+import com.eventmanagement.event_management_app.model.Events;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +57,14 @@ public class EventService {
             throw  new IllegalArgumentException("Event not found");
         }
         eventsRepository.delete(existingEvent);
+    }
+    public Events getEvent(String id){
+        Events existingEvent = eventsRepository.findByEventId(id);
+        if(existingEvent==null){
+            throw new IllegalArgumentException("Event not found");
+
+        }
+        return existingEvent;
     }
 
 

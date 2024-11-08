@@ -1,7 +1,7 @@
-package com.eventmanagement.event_management_app.events;
+package com.eventmanagement.event_management_app.controller;
 
-import com.eventmanagement.event_management_app.users.User;
-import com.eventmanagement.event_management_app.users.UserService;
+import com.eventmanagement.event_management_app.model.Events;
+import com.eventmanagement.event_management_app.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +39,12 @@ public class EventController {
         eventService.deleteEvent(eventId);
         return ResponseEntity.ok("Event has been deleted");
     }
+    @PostMapping("/{eventId}")
+    public ResponseEntity<Events> getEvent(@PathVariable String eventId){
+        Events event = eventService.getEvent(eventId);
+        return  ResponseEntity.ok(event);
+    }
+
+
 
 }

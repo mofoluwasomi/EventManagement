@@ -1,10 +1,13 @@
-package com.eventmanagement.event_management_app.users;
+package com.eventmanagement.event_management_app.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
@@ -13,14 +16,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Users") // This maps to the MongoDB collection
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class User {
     @Id
     private String id;
     private String firstName;
     private String lastName;
+    @Indexed(unique = true)
     private String userEmail;
     private String userPassword;
+    private UserRole userRole;
     private String company;
+
 
 
 
